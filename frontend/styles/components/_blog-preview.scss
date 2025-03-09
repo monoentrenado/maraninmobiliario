@@ -1,0 +1,32 @@
+@use '../variables' as *;
+
+.blog-preview
+  {padding: 50px 0;
+
+  h2{
+    text-align: center;
+    margin-bottom: 20px;
+    }
+
+  article{
+    background: $white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    }
+
+    h3{
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .read-more{
+      color: $accent-color;
+      font-weight: bold;
+      text-decoration: none;
+      &:hover{
+        text-decoration: underline;
+            }
+        }
+    }

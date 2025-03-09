@@ -1,0 +1,73 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+:host {
+  display: block;
+  width: 100%;
+  background: $primary-color;
+  color: white;
+  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .container {
+  @include flex-center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+}
+
+@include responsive($mobile) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}

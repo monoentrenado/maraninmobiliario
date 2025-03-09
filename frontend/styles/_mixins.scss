@@ -1,0 +1,31 @@
+@use 'variables' as *;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button-style {
+  background: $accent-color;
+  padding: 10px 20px;
+  border: none;
+  font-size: 1.2rem;
+  transition: background 0.3s ease;
+  
+  &:hover {
+    background: darken($accent-color, 10%);
+  }
+}
+
+@mixin container {
+  width: $container-width;
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+@mixin responsive($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}

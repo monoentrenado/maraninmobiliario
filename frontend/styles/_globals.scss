@@ -1,0 +1,23 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Global Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-stack;
+  color: $text-color;
+  background: $background-light;
+}
+
+.container {
+  @include container;
+}
+
+button {
+  cursor: pointer;
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "property_listings",
+  "info": {
+    "singularName": "property-listing",
+    "pluralName": "property-listings",
+    "displayName": "Property Listings"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "listing_id": {
+      "type": "uid"
+    }
+  }
+}

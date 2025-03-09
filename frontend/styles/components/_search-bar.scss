@@ -1,0 +1,23 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.search-bar {
+  background: $white;
+  padding: 20px;
+
+  .container {
+    @include flex-center;
+  }
+
+  input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  .search-btn {
+    @include button-style();
+  }
+}
