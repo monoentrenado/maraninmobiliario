@@ -19,4 +19,18 @@ class ContactForm extends HTMLElement {
           <p>Subscribe to get the latest listings and insights.</p>
           
           <div class="mailchimp-form">
-            <!--
+            <!-- Mailchimp Embedded Form -->
+            <form action="https://YOUR-MAILCHIMP-URL" method="post" target="_blank" novalidate>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="EMAIL" placeholder="Enter your email" required>
+              
+              <button type="submit" class="submit-btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+}
+
+customElements.define('contact-form', ContactForm);
