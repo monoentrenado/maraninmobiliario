@@ -1,13 +1,22 @@
-class Contact extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
-      <link rel="stylesheet" href="styles.css">
-      <div class="contact-container">
-        <h2>Solicita información</h2>
-        <iframe src="https://form.typeform.com/to/dYNaTG4h" title="Solicita información"></iframe>
-      </div>
-    `;
+class ContactForm extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
   }
-}
-customElements.define('contact-component', Contact);
 
+  connectedCallback() {
+    this.render();
+  }
+
+  render() {
+    this.shadowRoot.innerHTML = `
+      <style>
+        @import "./styles/contact.css"; /* Ensure SCSS compiles to CSS */
+      </style>
+      <section class="contact">
+        <div class="container">
+          <h2>Stay Updated</h2>
+          <p>Subscribe to get the latest listings and insights.</p>
+          
+          <div class="mailchimp-form">
+            <!--

@@ -1,53 +1,45 @@
-@use "../variables" as *;
-@use "../mixins" as *;
+@import 'variables';
+@import 'mixins';
 
-.contact {
-  padding: 50px 0;
-  text-align: center;
-
-  form {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  label {
-    display: block;
-    text-align: left;
-    font-weight: bold;
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    transition: border 0.3s ease;
-
-    &:focus {
-      border-color: $primary-color;
-      outline: none;
-      box-shadow: 0 0 5px rgba(0, 77, 64, 0.5);
-    }
-  }
-
-  .submit-btn {
-    @include button-style();
-  }
+:host {
+  display: block;
 }
 
-.typeform-btn, .subscribe-btn {
-    padding: 12px 20px;
-    background: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.contact {
+  text-align: center;
+  padding: 40px 20px;
+  background: $background-light;
   
-    &:hover {
-      background: #0056b3;
-      transform: scale(1.05);
+  h2 {
+    font-size: $heading-size;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: $body-size;
+    color: $text-color;
+    margin-bottom: 20px;
+  }
+
+  .mailchimp-form {
+    max-width: 400px;
+    margin: 0 auto;
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .submit-btn {
+        @include button-style;
+      }
     }
   }
-  
+}
