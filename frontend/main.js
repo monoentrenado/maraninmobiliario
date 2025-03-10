@@ -7,5 +7,7 @@ import './components/lazy-loading.js';
 import './components/modal.js';
 import './components/testimonials.js';
 import './components/blog.js';
+import '/components/blog-list.js';
+import './components/blog-detail.js';
 import './components/contact.js';
 import './components/footer.js';
