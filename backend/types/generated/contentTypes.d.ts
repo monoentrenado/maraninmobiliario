@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
   collectionName: 'blog_posts';
   info: {
+    description: '';
     displayName: 'Blog Posts';
     pluralName: 'blog-posts';
     singularName: 'blog-post';
@@ -380,10 +381,14 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    blog_post_id: Schema.Attribute.UID;
+    content: Schema.Attribute.RichText;
+    cover_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    date_published: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -391,7 +396,43 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String;
+    slug: Schema.Attribute.UID;
+    summary: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiContactContact extends Struct.CollectionTypeSchema {
+  collectionName: 'contacts';
+  info: {
+    displayName: 'contact';
+    pluralName: 'contacts';
+    singularName: 'contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contact_number: Schema.Attribute.Integer;
+    country: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    last_name: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact.contact'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.RichText;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    second_last_name: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -402,6 +443,7 @@ export interface ApiPropertyListingPropertyListing
   extends Struct.CollectionTypeSchema {
   collectionName: 'property_listings';
   info: {
+    description: '';
     displayName: 'Property Listings';
     pluralName: 'property-listings';
     singularName: 'property-listing';
@@ -410,18 +452,37 @@ export interface ApiPropertyListingPropertyListing
     draftAndPublish: true;
   };
   attributes: {
+    area: Schema.Attribute.Decimal;
+    available: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    cluster: Schema.Attribute.String;
+    conjunto: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    listing_id: Schema.Attribute.UID;
+    desarrollo: Schema.Attribute.String;
+    description: Schema.Attribute.Blocks;
+    featured: Schema.Attribute.Boolean;
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::property-listing.property-listing'
     > &
       Schema.Attribute.Private;
+    lot_number: Schema.Attribute.Integer;
+    main_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    plot_location_map: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -431,6 +492,7 @@ export interface ApiPropertyListingPropertyListing
 export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
   collectionName: 'testimonials';
   info: {
+    description: '';
     displayName: 'Testimonials';
     pluralName: 'testimonials';
     singularName: 'testimonial';
@@ -442,15 +504,16 @@ export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::testimonial.testimonial'
     > &
       Schema.Attribute.Private;
+    message: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    testimonial_id: Schema.Attribute.UID;
-    Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -967,6 +1030,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
+      'api::contact.contact': ApiContactContact;
       'api::property-listing.property-listing': ApiPropertyListingPropertyListing;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -4,17 +4,37 @@
   "info": {
     "singularName": "blog-post",
     "pluralName": "blog-posts",
-    "displayName": "Blog Posts"
+    "displayName": "Blog Posts",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "blog_post_id": {
+    "slug": {
       "type": "uid"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "date_published": {
+      "type": "integer"
+    },
+    "cover_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

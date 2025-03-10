@@ -1,0 +1,104 @@
+@import 'variables';
+@import 'mixins';
+
+:host {
+  display: block;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: $background-color;
+}
+
+.listing-details {
+  background: white;
+  padding: 20px;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.4s ease-out;
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.main-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: $border-radius;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+h2 {
+  color: $primary-color;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.details {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: $text-color;
+}
+
+.plot-map {
+  width: 100%;
+  margin-top: 20px;
+  border: 1px solid $secondary-color;
+}
+
+.gallery {
+  @include flex-center(row, 10px);
+  overflow-x: auto;
+  margin-top: 15px;
+  padding-bottom: 10px;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $secondary-color;
+    border-radius: 5px;
+  }
+
+  img {
+    height: 100px;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in forwards;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+}
+
+.contact-btn {
+  @include button-style($highlight-color);
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  transition: transform 0.2s ease-in-out;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

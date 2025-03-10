@@ -1,8 +1,8 @@
 {
-  "name": "backend",
+  "name": "Gestion Maran Inmobiliario",
   "version": "0.1.0",
   "private": true,
-  "description": "A Strapi application",
+  "description": "Administrador de contenidos",
   "scripts": {
     "build": "strapi build",
     "deploy": "strapi deploy",

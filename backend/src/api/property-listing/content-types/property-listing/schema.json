@@ -4,17 +4,77 @@
   "info": {
     "singularName": "property-listing",
     "pluralName": "property-listings",
-    "displayName": "Property Listings"
+    "displayName": "Property Listings",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "listing_id": {
-      "type": "uid"
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "area": {
+      "type": "decimal"
+    },
+    "lot_number": {
+      "type": "integer"
+    },
+    "conjunto": {
+      "type": "string"
+    },
+    "desarrollo": {
+      "type": "string"
+    },
+    "cluster": {
+      "type": "string"
+    },
+    "available": {
+      "type": "boolean",
+      "default": true
+    },
+    "main_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "plot_location_map": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "images": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
