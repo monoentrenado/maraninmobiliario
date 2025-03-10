@@ -65,3 +65,18 @@ class PropertyListings extends HTMLElement {
 }
 
 customElements.define("property-listings", PropertyListings);
+
+document.querySelectorAll(".listing").forEach((listing) => {
+  listing.addEventListener("click", () => {
+    const modal = document.createElement("listing-modal");
+    modal.innerHTML = `
+      <h2>${listing.querySelector("h3").innerText}</h2>
+      <img src="${listing.querySelector("img").src}" alt="">
+      <p>${listing.querySelector(".price").innerText}</p>
+      <p>${listing.querySelector("p").innerText}</p>
+    `;
+
+    document.body.appendChild(modal);
+    modal.open();
+  });
+});
